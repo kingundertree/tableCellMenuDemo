@@ -11,6 +11,6 @@
 
 @interface AJKMainViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,menuChooseDelegate>
 
--(void)menuChooseIndex:(int)cellIndexNum menuIndex:(int)menuIndexNum;
+-(void)menuChooseIndex:(NSInteger)cellIndexNum menuIndexNum:(NSInteger)menuIndexNum;
 
 @end

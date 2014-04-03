@@ -50,9 +50,9 @@
     
     UILabel *lab = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 80)];
     lab.textAlignment = NSTextAlignmentLeft;
-    lab.text = [NSString stringWithFormat:@"我就是我,颜色不一样的火焰--->>%d",indexPath.row];
+    lab.text = [NSString stringWithFormat:@"我就是我,颜色不一样的火焰--->>%d",indexpathNum.row];
     lab.font = [UIFont systemFontOfSize:16];
-    lab.backgroundColor = [UIColor blackColor];
+    lab.backgroundColor = [UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:1.0];
     lab.textColor = [UIColor whiteColor];
     [self.cellView addSubview:lab];
 
@@ -82,8 +82,7 @@
 }
 -(void)menuBtnClick1:(id)sender{
     UIButton *btn = sender;
-    NSLog(@"menuBtnClick1--->>%d",btn.tag);
-    [chooseDelegate menuChooseIndex:indexpathNum.row menuIndex:btn.tag];
+    [chooseDelegate menuChooseIndex:indexpathNum.row menuIndexNum:btn.tag];
     
 //    UITableViewCell *cell;
 //    if (ISIOS7) {
@@ -94,8 +93,7 @@
 }
 -(void)menuBtnClick2:(id)sender{
     UIButton *btn = sender;
-    NSLog(@"menuBtnClick2--->>%d",btn.tag);
-    [chooseDelegate menuChooseIndex:indexpathNum.row menuIndex:btn.tag];
+    [chooseDelegate menuChooseIndex:indexpathNum.row menuIndexNum:btn.tag];
 }
 -(void)cellPanGes:(UIPanGestureRecognizer *)panGes{
     CGPoint pointer = [panGes locationInView:self.contentView];
@@ -143,19 +141,19 @@
     }
 }
 -(void)cellViewMoveToX:(float)x{
-    if (x <= -170) {
-        x = -170;
-    }else if (x >= 20){
-        x = 20;
+    if (x <= -180) {
+        x = -180;
+    }else if (x >= 50){
+        x = 50;
     }
     self.cellView.frame = CGRectMake(x, 0, 320, 80);
-    if (x == -170) {
+    if (x == -180) {
         [UIView animateWithDuration:0.2 animations:^{
             [self initCellFrame:-160];
         } completion:^(BOOL finished) {
         }];
     }
-    if (x == 20) {
+    if (x == 50) {
         [UIView animateWithDuration:0.2 animations:^{
             [self initCellFrame:0];
         } completion:^(BOOL finished) {

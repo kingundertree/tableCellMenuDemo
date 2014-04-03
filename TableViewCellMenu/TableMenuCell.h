@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @protocol menuChooseDelegate <NSObject>
--(void)menuChooseIndex:(int)cellIndexNum menuIndex:(int)menuIndexNum;
+-(void)menuChooseIndex:(NSInteger)cellIndexNum menuIndexNum:(NSInteger)menuIndexNum;
 @end
 
 @interface TableMenuCell : UITableViewCell<UIGestureRecognizerDelegate>

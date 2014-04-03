@@ -38,8 +38,8 @@
     tableList.dataSource = self;
     [self.view addSubview:tableList];
 }
--(void)menuChooseIndex:(int)cellIndexNum menuIndex:(int)menuIndexNum{
-    NSLog(@"你选择了第%d行第%d个菜单",cellIndexNum+1,menuIndexNum+1);
+-(void)menuChooseIndex:(NSInteger)cellIndexNum menuIndexNum:(NSInteger)menuIndexNum{
+    NSLog(@"你选择了第 %d 行第 %d 个菜单",cellIndexNum+1,menuIndexNum+1);
 }
 #pragma mark - UITableViewDelegate
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
