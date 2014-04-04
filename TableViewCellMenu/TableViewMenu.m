@@ -34,8 +34,15 @@
 -(void)menuChooseIndex:(NSInteger)cellIndexNum menuIndexNum:(NSInteger)menuIndexNum{
     
 }
+- (void)menuDeleteCellSuc:(TableMenuCell *)cell{
+    [cell.superview sendSubviewToBack:cell];
+    self.isEditing = NO;
+}
+- (void)deleteCell:(TableMenuCell *)cell{
+    [cell.superview sendSubviewToBack:cell];
+    self.isEditing = NO;
+}
 - (void)setIsEditing:(BOOL)isEditing{
-    NSLog(@"isEditing--->>%d",isEditing);
     if (_isEditing != isEditing) {
         _isEditing = isEditing;
     }
@@ -43,7 +50,8 @@
     if (_isEditing) {
         if (!_overLayView) {
             _overLayView = [[OverLayView alloc] initWithFrame:self.view.bounds];
-            _overLayView.backgroundColor = [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:.1];
+//            _overLayView.backgroundColor = [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:.1];
+            _overLayView.backgroundColor = [UIColor clearColor];
             _overLayView.delegate = self;
             [self.view addSubview:_overLayView];
         }
@@ -59,7 +67,6 @@
     CGPoint location = [self.view convertPoint:didHitPoint fromView:view];
     CGRect rect = [self.view  convertRect:self.activeCell.frame toView:self.view];
     shoudReceivePointTouch = CGRectContainsPoint(rect, location);
-    NSLog(@"shoudReceivePointTouch--->>%d",shoudReceivePointTouch);
     if (!shoudReceivePointTouch) {
         [self hideMenuActive:YES];
     }

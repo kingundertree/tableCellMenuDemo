@@ -16,6 +16,7 @@
 - (void)tableMenuWillShowInCell:(TableMenuCell *)cell;
 - (void)tableMenuDidHideInCell:(TableMenuCell *)cell;
 - (void)tableMenuWillHideInCell:(TableMenuCell *)cell;
+- (void)deleteCell:(TableMenuCell *)cell;
 
 - (void)menuChooseIndex:(NSInteger)cellIndexNum menuIndexNum:(NSInteger)menuIndexNum;
 @end
@@ -27,6 +28,10 @@
 @property (nonatomic, assign) id<menuActionDelegate>menuActionDelegate;
 @property (nonatomic, strong) NSIndexPath *indexpathNum;
 @property (nonatomic, assign) int menuCount;
+@property (nonatomic, strong) UIView *menuView;
+//@property (readonly, assign, nonatomic, getter = isMenuViewHidden) BOOL menuViewHidden;
+@property (assign, nonatomic) BOOL menuViewHidden;
+
 
 -(void)configWithData:(NSIndexPath *)indexPath menuData:(NSArray *)menuData cellFrame:(CGRect)cellFrame;
 - (void)setMenuHidden:(BOOL)hidden animated:(BOOL)animated completionHandler:(void (^)(void))completionHandler;

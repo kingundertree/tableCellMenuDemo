@@ -8,6 +8,9 @@
 
 #import "TableMenuCell.h"
 
+@interface TableMenuCell () 
+//@property (assign, nonatomic, getter = isMenuViewHidden) BOOL menuViewHidden;
+@end
 
 #define ISIOS7 ([[[[UIDevice currentDevice] systemVersion] substringToIndex:1] intValue]>=7)
 
@@ -18,15 +21,19 @@
 @synthesize menuActionDelegate;
 @synthesize indexpathNum;
 @synthesize menuCount;
+@synthesize menuView;
+@synthesize menuViewHidden;
+
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
         menuCount = 0;
-
+        
         self.cellView = [[UIView alloc] init];
-        self.cellView.backgroundColor = [UIColor whiteColor];
+        self.cellView.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:self.cellView];
         
         UIPanGestureRecognizer *panGes = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(cellPanGes:)];
@@ -46,23 +53,26 @@
     }
     self.cellView = [[UIView alloc] init];
     self.cellView.backgroundColor = [UIColor whiteColor];
-    [self.contentView addSubview:self.cellView];
-    
     self.cellView.frame = cellFrame;
+    [self.contentView addSubview:self.cellView];
     
     UILabel *lab = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 80)];
     lab.textAlignment = NSTextAlignmentLeft;
-    lab.text = [NSString stringWithFormat:@"我就是我,颜色不一样的火焰--->>%d",indexpathNum.row];
+    lab.text = [NSString stringWithFormat:@"||^^<>^^我就是我,颜色不一样的火焰>>%d",indexpathNum.row];
     lab.font = [UIFont systemFontOfSize:16];
-    lab.backgroundColor = [UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:1.0];
-    lab.textColor = [UIColor whiteColor];
+//    lab.backgroundColor = [UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:1.0];
+    lab.backgroundColor = [UIColor whiteColor];
+    lab.textColor = [UIColor blackColor];
     [self.cellView addSubview:lab];
     
-    UIView *menuView = [[UIView alloc] init];
+    menuView = [[UIView alloc] init];
     menuView.frame = CGRectMake(320 - 80*[menuData count], 0, 80*[menuData count], cellFrame.size.height);
     menuView.backgroundColor = [UIColor clearColor];
     [self.contentView insertSubview:menuView belowSubview:self.cellView];
+//    [self.contentView insertSubview:menuView aboveSubview:self.cellView];
     
+    self.menuViewHidden = YES;
+
     for (int i = 0; i < menuCount; i++) {
         UIView *bgView = [[UIView alloc] init];
         bgView.backgroundColor = [UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:1.0];
@@ -77,10 +87,13 @@
         [menuBtn setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@",[[menuData objectAtIndex:i] objectForKey:@"stateHighLight"]]] forState:UIControlStateHighlighted];
         [bgView addSubview:menuBtn];
     }
-    
 }
 -(void)menuBtnClick:(id)sender{
     UIButton *btn = sender;
+    if (btn.tag == 2) {
+        self.menuViewHidden = YES;
+        [menuActionDelegate deleteCell:self];
+    }
     [self.menuActionDelegate menuChooseIndex:indexpathNum.row menuIndexNum:btn.tag];
     
 //    UITableViewCell *cell;
@@ -92,10 +105,17 @@
 }
 
 -(void)cellPanGes:(UIPanGestureRecognizer *)panGes{
+    if (self.selected) {
+        [self setSelected:NO animated:NO];
+    }
     CGPoint pointer = [panGes locationInView:self.contentView];
     if (panGes.state == UIGestureRecognizerStateBegan) {
+        self.menuViewHidden = NO;
         startX = pointer.x;
         cellX = self.cellView.frame.origin.x;
+    }else if (panGes.state == UIGestureRecognizerStateChanged){
+        self.menuViewHidden = NO;
+        [menuActionDelegate tableMenuWillShowInCell:self];
     }else if (panGes.state == UIGestureRecognizerStateEnded){
         [self cellReset:pointer.x - startX];
         return;
@@ -105,6 +125,7 @@
     }
     [self cellViewMoveToX:cellX + pointer.x - startX];
 }
+
 -(void)cellReset:(float)moveX{
     if (cellX <= -80*menuCount) {
         if (moveX <= 0) {
@@ -113,12 +134,14 @@
             [UIView animateWithDuration:0.2 animations:^{
                 [self initCellFrame:0];
             } completion:^(BOOL finished) {
+                self.menuViewHidden = YES;
                 [self.menuActionDelegate tableMenuDidHideInCell:self];
             }];
         }else if (moveX <= 20){
             [UIView animateWithDuration:0.2 animations:^{
                 [self initCellFrame:-menuCount*80];
             } completion:^(BOOL finished) {
+                self.menuViewHidden = NO;
                 [self.menuActionDelegate tableMenuDidShowInCell:self];
             }];
         }
@@ -129,12 +152,16 @@
             [UIView animateWithDuration:0.2 animations:^{
                 [self initCellFrame:-menuCount*80];
             } completion:^(BOOL finished) {
+                self.menuViewHidden = NO;
+                NSLog(@"self.menuViewHidden---3>>%d",self.menuViewHidden);
                 [self.menuActionDelegate tableMenuDidShowInCell:self];
             }];
         }else if (moveX >= -20){
             [UIView animateWithDuration:0.2 animations:^{
                 [self initCellFrame:0];
             } completion:^(BOOL finished) {
+                self.menuViewHidden = YES;
+                NSLog(@"self.menuViewHidden---4>>%d",self.menuViewHidden);
                 [self.menuActionDelegate tableMenuDidShowInCell:self];
             }];
         }
@@ -151,6 +178,7 @@
         [UIView animateWithDuration:0.2 animations:^{
             [self initCellFrame:-menuCount*80];
         } completion:^(BOOL finished) {
+            self.menuViewHidden = NO;
             [self.menuActionDelegate tableMenuDidShowInCell:self];
         }];
     }
@@ -158,6 +186,7 @@
         [UIView animateWithDuration:0.2 animations:^{
             [self initCellFrame:0];
         } completion:^(BOOL finished) {
+            self.menuViewHidden = YES;
             [self.menuActionDelegate tableMenuDidHideInCell:self];
         }];
     }
@@ -175,25 +204,21 @@
     if ([gestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]]) {
         CGPoint translation = [(UIPanGestureRecognizer *)gestureRecognizer translationInView:self];
         return fabs(translation.x) > fabs(translation.y);
-    }else if ([gestureRecognizer isKindOfClass:[UITapGestureRecognizer class]]){
-        NSLog(@"tapges");
-        return YES;
     }
-//    [gestureRecognizer ob]
-//    if ([NSStringFromClass([touch.view class]) isEqualToString:@"UITableViewCellContentView"]) {
-//        return NO;
-//    }
     return YES;
 }
-- (void)hideMenu{
-}
+
 - (void)setMenuHidden:(BOOL)hidden animated:(BOOL)animated completionHandler:(void (^)(void))completionHandler{
+    if (self.selected) {
+        [self setSelected:NO animated:NO];
+    }
     if (hidden) {
         CGRect frame = self.cellView.frame;
         if (frame.origin.x != 0) {
             [UIView animateWithDuration:0.2 animations:^{
                 [self initCellFrame:0];
             } completion:^(BOOL finished) {
+                self.menuViewHidden = YES;
                 [self.menuActionDelegate tableMenuDidHideInCell:self];
                 if (completionHandler) {
                     completionHandler();
@@ -202,11 +227,28 @@
         }
     }
 }
+- (void)setMenuViewHidden:(BOOL)Hidden{
+    menuViewHidden = Hidden;
+    
+    if (Hidden) {
+        self.menuView.hidden = YES;
+    }else{
+        self.menuView.hidden = NO;
+    }
+}
+
+- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated{
+    if (self.menuViewHidden) {
+        self.menuView.hidden = YES;
+        [super setHighlighted:highlighted animated:animated];
+    }
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+    if (self.menuViewHidden) {
+        self.menuView.hidden = YES;
+        [super setSelected:selected animated:animated];
+    }
 }
 
 @end

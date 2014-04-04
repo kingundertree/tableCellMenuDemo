@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2737102418EBADEA0049309B /* AJKMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2737102318EBADEA0049309B /* AJKMainViewController.m */; };
 		2737102718EBAE0F0049309B /* TableMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2737102618EBAE0F0049309B /* TableMenuCell.m */; };
 		27437BB618E5780A00D075D6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27437BB518E5780A00D075D6 /* Foundation.framework */; };
 		27437BB818E5780A00D075D6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27437BB718E5780A00D075D6 /* CoreGraphics.framework */; };
@@ -30,6 +29,7 @@
 		27455E6118EE3BF800F7A524 /* TableViewMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 27455E6018EE3BF800F7A524 /* TableViewMenu.m */; };
 		27455E6418EE3DD100F7A524 /* OverLayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27455E6318EE3DD100F7A524 /* OverLayView.m */; };
 		27455E6718EE588000F7A524 /* AJKDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27455E6618EE588000F7A524 /* AJKDetailViewController.m */; };
+		27A53D4518EE7F100075770D /* AJKMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A53D4418EE7F100075770D /* AJKMainViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,8 +43,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2737102218EBADEA0049309B /* AJKMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJKMainViewController.h; sourceTree = "<group>"; };
-		2737102318EBADEA0049309B /* AJKMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJKMainViewController.m; sourceTree = "<group>"; };
 		2737102518EBAE0F0049309B /* TableMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableMenuCell.h; sourceTree = "<group>"; };
 		2737102618EBAE0F0049309B /* TableMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableMenuCell.m; sourceTree = "<group>"; };
 		27437BB218E5780A00D075D6 /* TableViewCellMenu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TableViewCellMenu.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,6 +73,8 @@
 		27455E6318EE3DD100F7A524 /* OverLayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverLayView.m; sourceTree = "<group>"; };
 		27455E6518EE588000F7A524 /* AJKDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJKDetailViewController.h; sourceTree = "<group>"; };
 		27455E6618EE588000F7A524 /* AJKDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJKDetailViewController.m; sourceTree = "<group>"; };
+		27A53D4318EE7F100075770D /* AJKMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJKMainViewController.h; sourceTree = "<group>"; };
+		27A53D4418EE7F100075770D /* AJKMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJKMainViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,8 +137,8 @@
 				27437BE418E5789300D075D6 /* tableViewCellMenu */,
 				27437BC418E5780A00D075D6 /* AJKAppDelegate.h */,
 				27437BC518E5780A00D075D6 /* AJKAppDelegate.m */,
-				2737102218EBADEA0049309B /* AJKMainViewController.h */,
-				2737102318EBADEA0049309B /* AJKMainViewController.m */,
+				27A53D4318EE7F100075770D /* AJKMainViewController.h */,
+				27A53D4418EE7F100075770D /* AJKMainViewController.m */,
 				27455E5F18EE3BF800F7A524 /* TableViewMenu.h */,
 				27455E6018EE3BF800F7A524 /* TableViewMenu.m */,
 				2737102518EBAE0F0049309B /* TableMenuCell.h */,
@@ -309,7 +309,7 @@
 				27437BC218E5780A00D075D6 /* main.m in Sources */,
 				27455E6418EE3DD100F7A524 /* OverLayView.m in Sources */,
 				27455E6118EE3BF800F7A524 /* TableViewMenu.m in Sources */,
-				2737102418EBADEA0049309B /* AJKMainViewController.m in Sources */,
+				27A53D4518EE7F100075770D /* AJKMainViewController.m in Sources */,
 				27437BC618E5780A00D075D6 /* AJKAppDelegate.m in Sources */,
 				2737102718EBAE0F0049309B /* TableMenuCell.m in Sources */,
 			);

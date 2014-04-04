@@ -21,7 +21,6 @@
 }
 
 -(UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event{
-    NSLog(@"hitTest");
     return [self.delegate overLayView:self didHitPoint:point withEvent:event];
 }
 
