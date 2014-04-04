@@ -8,6 +8,8 @@
 
 #import "AJKMainViewController.h"
 
+#define CELLFRAME CGRectMake(0, 0, 320, 80)
+
 @interface AJKMainViewController (){
     NSMutableArray *listData;
 }
@@ -30,7 +32,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = @"TableViewMenuCell";
+    self.title = @"TableViewCellMenu";
     self.view.backgroundColor = [UIColor whiteColor];
     
     UITableView *tableList = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height) style:UITableViewStylePlain];
@@ -40,6 +42,8 @@
 }
 -(void)menuChooseIndex:(NSInteger)cellIndexNum menuIndexNum:(NSInteger)menuIndexNum{
     NSLog(@"你选择了第 %d 行第 %d 个菜单",cellIndexNum+1,menuIndexNum+1);
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"你选择了第 %d 行第 %d 个菜单",cellIndexNum+1,menuIndexNum+1] delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
+//    [alert show];
 }
 #pragma mark - UITableViewDelegate
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -57,8 +61,15 @@
         cell.chooseDelegate = self;
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    [cell configWithData:indexPath cellFrame:CGRectMake(0, 0, 320, 44)];
 
+    //menuImgArr count 最多为3个
+    NSMutableArray *menuImgArr = [[NSMutableArray alloc] init];
+    for (int i = 0; i < 3; i++) {
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithObjectsAndKeys:[NSString stringWithFormat:@"%dNormal.png",i+1],@"stateNormal",[NSString stringWithFormat:@"%dHighLight.png",i+1],@"stateHighLight", nil];
+        [menuImgArr addObject:dic];
+    }
+    
+    [cell configWithData:indexPath menuData:menuImgArr cellFrame:CELLFRAME];
 
     return cell;
 }

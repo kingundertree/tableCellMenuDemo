@@ -18,7 +18,8 @@
 @property (nonatomic, assign) float cellX;
 @property (nonatomic, assign) id<menuChooseDelegate>chooseDelegate;
 @property (nonatomic, strong) NSIndexPath *indexpathNum;
+@property (nonatomic, assign) int menuCount;
 
--(void)configWithData:(NSIndexPath *)indexPath cellFrame:(CGRect)cellFrame;
+-(void)configWithData:(NSIndexPath *)indexPath menuData:(NSArray *)menuData cellFrame:(CGRect)cellFrame;
 
 @end

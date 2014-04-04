@@ -21,6 +21,12 @@
 		27437BD118E5780A00D075D6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27437BB918E5780A00D075D6 /* UIKit.framework */; };
 		27437BD918E5780A00D075D6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27437BD718E5780A00D075D6 /* InfoPlist.strings */; };
 		27437BDB18E5780A00D075D6 /* TableViewCellMenuTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27437BDA18E5780A00D075D6 /* TableViewCellMenuTests.m */; };
+		27455C9418ECF64200F7A524 /* 1HighLight.png in Resources */ = {isa = PBXBuildFile; fileRef = 27455C8E18ECF64200F7A524 /* 1HighLight.png */; };
+		27455C9518ECF64200F7A524 /* 1Normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 27455C8F18ECF64200F7A524 /* 1Normal.png */; };
+		27455C9618ECF64200F7A524 /* 2HighLight.png in Resources */ = {isa = PBXBuildFile; fileRef = 27455C9018ECF64200F7A524 /* 2HighLight.png */; };
+		27455C9718ECF64200F7A524 /* 2Normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 27455C9118ECF64200F7A524 /* 2Normal.png */; };
+		27455C9818ECF64200F7A524 /* 3HighLight.png in Resources */ = {isa = PBXBuildFile; fileRef = 27455C9218ECF64200F7A524 /* 3HighLight.png */; };
+		27455C9918ECF64200F7A524 /* 3Normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 27455C9318ECF64200F7A524 /* 3Normal.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +60,12 @@
 		27437BD618E5780A00D075D6 /* TableViewCellMenuTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TableViewCellMenuTests-Info.plist"; sourceTree = "<group>"; };
 		27437BD818E5780A00D075D6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		27437BDA18E5780A00D075D6 /* TableViewCellMenuTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TableViewCellMenuTests.m; sourceTree = "<group>"; };
+		27455C8E18ECF64200F7A524 /* 1HighLight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1HighLight.png; sourceTree = "<group>"; };
+		27455C8F18ECF64200F7A524 /* 1Normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1Normal.png; sourceTree = "<group>"; };
+		27455C9018ECF64200F7A524 /* 2HighLight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2HighLight.png; sourceTree = "<group>"; };
+		27455C9118ECF64200F7A524 /* 2Normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2Normal.png; sourceTree = "<group>"; };
+		27455C9218ECF64200F7A524 /* 3HighLight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3HighLight.png; sourceTree = "<group>"; };
+		27455C9318ECF64200F7A524 /* 3Normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3Normal.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,8 +170,22 @@
 		27437BE418E5789300D075D6 /* tableViewCellMenu */ = {
 			isa = PBXGroup;
 			children = (
+				27455C7418ECF4CA00F7A524 /* image */,
 			);
 			name = tableViewCellMenu;
+			sourceTree = "<group>";
+		};
+		27455C7418ECF4CA00F7A524 /* image */ = {
+			isa = PBXGroup;
+			children = (
+				27455C8E18ECF64200F7A524 /* 1HighLight.png */,
+				27455C8F18ECF64200F7A524 /* 1Normal.png */,
+				27455C9018ECF64200F7A524 /* 2HighLight.png */,
+				27455C9118ECF64200F7A524 /* 2Normal.png */,
+				27455C9218ECF64200F7A524 /* 3HighLight.png */,
+				27455C9318ECF64200F7A524 /* 3Normal.png */,
+			);
+			path = image;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -238,8 +264,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27455C9518ECF64200F7A524 /* 1Normal.png in Resources */,
 				27437BC018E5780A00D075D6 /* InfoPlist.strings in Resources */,
+				27455C9918ECF64200F7A524 /* 3Normal.png in Resources */,
+				27455C9418ECF64200F7A524 /* 1HighLight.png in Resources */,
+				27455C9718ECF64200F7A524 /* 2Normal.png in Resources */,
 				27437BC818E5780A00D075D6 /* Images.xcassets in Resources */,
+				27455C9818ECF64200F7A524 /* 3HighLight.png in Resources */,
+				27455C9618ECF64200F7A524 /* 2HighLight.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
