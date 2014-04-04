@@ -87,13 +87,13 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-//    if (!self.isEditing) {
-//        AJKDetailViewController *detailVC = [[AJKDetailViewController alloc] init];
-//        
-//        [self.navigationController pushViewController:detailVC animated:YES];
-//    }
+    if (!self.isEditing) {
+        AJKDetailViewController *detailVC = [[AJKDetailViewController alloc] init];
+        
+        [self.navigationController pushViewController:detailVC animated:YES];
+    }
 }
 
 - (void)didReceiveMemoryWarning
