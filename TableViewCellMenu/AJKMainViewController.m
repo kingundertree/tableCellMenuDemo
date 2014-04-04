@@ -7,6 +7,7 @@
 //
 
 #import "AJKMainViewController.h"
+#import "AJKDetailViewController.h"
 
 #define CELLFRAME CGRectMake(0, 0, 320, 80)
 
@@ -54,7 +55,7 @@
     TableMenuCell *cell = [tableView dequeueReusableCellWithIdentifier:identifer];
     if (cell == nil) {
         cell = [[TableMenuCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifer];
-        cell.chooseDelegate = self;
+        cell.menuActionDelegate = self;
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
@@ -72,6 +73,10 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    AJKDetailViewController *detailVC = [[AJKDetailViewController alloc] init];
+    
+    [self.navigationController pushViewController:detailVC animated:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -80,15 +85,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

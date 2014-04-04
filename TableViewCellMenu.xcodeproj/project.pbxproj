@@ -28,6 +28,8 @@
 		27455C9818ECF64200F7A524 /* 3HighLight.png in Resources */ = {isa = PBXBuildFile; fileRef = 27455C9218ECF64200F7A524 /* 3HighLight.png */; };
 		27455C9918ECF64200F7A524 /* 3Normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 27455C9318ECF64200F7A524 /* 3Normal.png */; };
 		27455E6118EE3BF800F7A524 /* TableViewMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 27455E6018EE3BF800F7A524 /* TableViewMenu.m */; };
+		27455E6418EE3DD100F7A524 /* OverLayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27455E6318EE3DD100F7A524 /* OverLayView.m */; };
+		27455E6718EE588000F7A524 /* AJKDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27455E6618EE588000F7A524 /* AJKDetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +71,10 @@
 		27455C9318ECF64200F7A524 /* 3Normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3Normal.png; sourceTree = "<group>"; };
 		27455E5F18EE3BF800F7A524 /* TableViewMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewMenu.h; sourceTree = "<group>"; };
 		27455E6018EE3BF800F7A524 /* TableViewMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewMenu.m; sourceTree = "<group>"; };
+		27455E6218EE3DD100F7A524 /* OverLayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverLayView.h; sourceTree = "<group>"; };
+		27455E6318EE3DD100F7A524 /* OverLayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverLayView.m; sourceTree = "<group>"; };
+		27455E6518EE588000F7A524 /* AJKDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJKDetailViewController.h; sourceTree = "<group>"; };
+		27455E6618EE588000F7A524 /* AJKDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJKDetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +143,10 @@
 				27455E6018EE3BF800F7A524 /* TableViewMenu.m */,
 				2737102518EBAE0F0049309B /* TableMenuCell.h */,
 				2737102618EBAE0F0049309B /* TableMenuCell.m */,
+				27455E6218EE3DD100F7A524 /* OverLayView.h */,
+				27455E6318EE3DD100F7A524 /* OverLayView.m */,
+				27455E6518EE588000F7A524 /* AJKDetailViewController.h */,
+				27455E6618EE588000F7A524 /* AJKDetailViewController.m */,
 				27437BC718E5780A00D075D6 /* Images.xcassets */,
 				27437BBC18E5780A00D075D6 /* Supporting Files */,
 			);
@@ -295,7 +305,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27455E6718EE588000F7A524 /* AJKDetailViewController.m in Sources */,
 				27437BC218E5780A00D075D6 /* main.m in Sources */,
+				27455E6418EE3DD100F7A524 /* OverLayView.m in Sources */,
 				27455E6118EE3BF800F7A524 /* TableViewMenu.m in Sources */,
 				2737102418EBADEA0049309B /* AJKMainViewController.m in Sources */,
 				27437BC618E5780A00D075D6 /* AJKAppDelegate.m in Sources */,

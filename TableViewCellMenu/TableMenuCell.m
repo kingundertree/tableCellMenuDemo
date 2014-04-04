@@ -15,7 +15,7 @@
 @synthesize cellView;
 @synthesize startX;
 @synthesize cellX;
-@synthesize chooseDelegate;
+@synthesize menuActionDelegate;
 @synthesize indexpathNum;
 @synthesize menuCount;
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -34,12 +34,6 @@
         panGes.delaysTouchesBegan = YES;
         panGes.cancelsTouchesInView = NO;
         [self addGestureRecognizer:panGes];
-
-        UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cellTapGus:)];
-        tapGes.delegate = self;
-        tapGes.numberOfTouchesRequired = 2;
-        tapGes.numberOfTapsRequired = 1;
-        [self addGestureRecognizer:tapGes];
     }
     return self;
 }
@@ -64,12 +58,6 @@
     lab.textColor = [UIColor whiteColor];
     [self.cellView addSubview:lab];
     
-//    UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cellTapGus:)];
-//    tapGes.delegate = self;
-//    tapGes.numberOfTouchesRequired = 1;
-//    tapGes.numberOfTapsRequired = 1;
-//    [lab addGestureRecognizer:tapGes];
-    
     UIView *menuView = [[UIView alloc] init];
     menuView.frame = CGRectMake(320 - 80*[menuData count], 0, 80*[menuData count], cellFrame.size.height);
     menuView.backgroundColor = [UIColor clearColor];
@@ -93,7 +81,7 @@
 }
 -(void)menuBtnClick:(id)sender{
     UIButton *btn = sender;
-    [chooseDelegate menuChooseIndex:indexpathNum.row menuIndexNum:btn.tag];
+    [self.menuActionDelegate menuChooseIndex:indexpathNum.row menuIndexNum:btn.tag];
     
 //    UITableViewCell *cell;
 //    if (ISIOS7) {
@@ -102,15 +90,7 @@
 //        cell = (UITableViewCell *)btn.superview;
 //    }
 }
--(void)cellTapGus:(UITapGestureRecognizer *)tapGes{
-    NSLog(@"tapGes-->>");
-    if (self.cellView.frame.origin.x != 0) {
-        [UIView animateWithDuration:0.2 animations:^{
-            [self initCellFrame:0];
-        } completion:^(BOOL finished) {
-        }];
-    }
-}
+
 -(void)cellPanGes:(UIPanGestureRecognizer *)panGes{
     CGPoint pointer = [panGes locationInView:self.contentView];
     if (panGes.state == UIGestureRecognizerStateBegan) {
@@ -133,11 +113,13 @@
             [UIView animateWithDuration:0.2 animations:^{
                 [self initCellFrame:0];
             } completion:^(BOOL finished) {
+                [self.menuActionDelegate tableMenuDidHideInCell:self];
             }];
         }else if (moveX <= 20){
             [UIView animateWithDuration:0.2 animations:^{
                 [self initCellFrame:-menuCount*80];
             } completion:^(BOOL finished) {
+                [self.menuActionDelegate tableMenuDidShowInCell:self];
             }];
         }
     }else{
@@ -147,11 +129,13 @@
             [UIView animateWithDuration:0.2 animations:^{
                 [self initCellFrame:-menuCount*80];
             } completion:^(BOOL finished) {
+                [self.menuActionDelegate tableMenuDidShowInCell:self];
             }];
         }else if (moveX >= -20){
             [UIView animateWithDuration:0.2 animations:^{
                 [self initCellFrame:0];
             } completion:^(BOOL finished) {
+                [self.menuActionDelegate tableMenuDidShowInCell:self];
             }];
         }
     }
@@ -167,12 +151,14 @@
         [UIView animateWithDuration:0.2 animations:^{
             [self initCellFrame:-menuCount*80];
         } completion:^(BOOL finished) {
+            [self.menuActionDelegate tableMenuDidShowInCell:self];
         }];
     }
     if (x == 50) {
         [UIView animateWithDuration:0.2 animations:^{
             [self initCellFrame:0];
         } completion:^(BOOL finished) {
+            [self.menuActionDelegate tableMenuDidHideInCell:self];
         }];
     }
 }
@@ -184,8 +170,7 @@
 }
 #pragma mark * UIPanGestureRecognizer delegate
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
-    NSString *str = [NSString stringWithUTF8String:object_getClassName(gestureRecognizer)];
-    NSLog(@"tapType---->>%@",str);
+//    NSString *str = [NSString stringWithUTF8String:object_getClassName(gestureRecognizer)];
     
     if ([gestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]]) {
         CGPoint translation = [(UIPanGestureRecognizer *)gestureRecognizer translationInView:self];
@@ -200,12 +185,23 @@
 //    }
     return YES;
 }
-
-- (void)awakeFromNib
-{
-    // Initialization code
+- (void)hideMenu{
 }
-
+- (void)setMenuHidden:(BOOL)hidden animated:(BOOL)animated completionHandler:(void (^)(void))completionHandler{
+    if (hidden) {
+        CGRect frame = self.cellView.frame;
+        if (frame.origin.x != 0) {
+            [UIView animateWithDuration:0.2 animations:^{
+                [self initCellFrame:0];
+            } completion:^(BOOL finished) {
+                [self.menuActionDelegate tableMenuDidHideInCell:self];
+                if (completionHandler) {
+                    completionHandler();
+                }
+            }];
+        }
+    }
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];

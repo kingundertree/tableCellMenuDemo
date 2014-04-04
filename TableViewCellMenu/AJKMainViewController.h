@@ -10,7 +10,7 @@
 #import "TableMenuCell.h"
 #import "TableViewMenu.h"
 
-@interface AJKMainViewController : TableViewMenu<UITableViewDataSource,UITableViewDelegate,menuChooseDelegate>
+@interface AJKMainViewController : TableViewMenu<UITableViewDataSource,UITableViewDelegate>
 
 -(void)menuChooseIndex:(NSInteger)cellIndexNum menuIndexNum:(NSInteger)menuIndexNum;
 

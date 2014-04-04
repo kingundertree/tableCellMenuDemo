@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TableMenuCell.h"
+#import "OverLayView.h"
 
-@interface TableViewMenu : UITableViewController
+@interface TableViewMenu : UITableViewController<menuActionDelegate,OverLayViewDelegate>
 
 @end
