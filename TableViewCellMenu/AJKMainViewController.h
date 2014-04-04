@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "TableMenuCell.h"
+#import "TableViewMenu.h"
 
-@interface AJKMainViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,menuChooseDelegate>
+@interface AJKMainViewController : TableViewMenu<UITableViewDataSource,UITableViewDelegate,menuChooseDelegate>
 
 -(void)menuChooseIndex:(NSInteger)cellIndexNum menuIndexNum:(NSInteger)menuIndexNum;
 
