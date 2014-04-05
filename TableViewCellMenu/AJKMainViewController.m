@@ -39,18 +39,18 @@
 }
 -(void)menuChooseIndex:(NSInteger)cellIndexNum menuIndexNum:(NSInteger)menuIndexNum{
     NSLog(@"你选择了第 %d 行第 %d 个菜单",cellIndexNum+1,menuIndexNum+1);
-    //    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"你选择了第 %d 行第 %d 个菜单",cellIndexNum+1,menuIndexNum+1] delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
-    //    [alert show];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"你选择了第 %d 行第 %d 个菜单",cellIndexNum+1,menuIndexNum+1] delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
+    [alert show];
 }
 - (void)deleteCell:(TableMenuCell *)cell{
-    NSIndexPath *index = cell.indexpathNum;
-    [super deleteCell:cell];
-    
-    [listData removeObjectAtIndex:index.row];
-    
-    [self.tableView deleteRowsAtIndexPaths:@[[self.tableView indexPathForCell:cell]] withRowAnimation:UITableViewRowAnimationAutomatic];
-    
-    [self.tableView reloadData];
+//    NSIndexPath *index = cell.indexpathNum;
+//    [super deleteCell:cell];
+//    
+//    [listData removeObjectAtIndex:index.row];
+//    
+//    [self.tableView deleteRowsAtIndexPaths:@[[self.tableView indexPathForCell:cell]] withRowAnimation:UITableViewRowAnimationAutomatic];
+//    
+//    [self.tableView reloadData];
 }
 
 #pragma mark - UITableViewDelegate
@@ -89,11 +89,16 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if (!self.isEditing) {
-        AJKDetailViewController *detailVC = [[AJKDetailViewController alloc] init];
-        
-        [self.navigationController pushViewController:detailVC animated:YES];
+    if (self.isAllowScroll != TableIsScroll && self.isEditing) {
+        return;
     }
+    if (self.isAllowScroll == TableIsScroll && self.isEditing) {
+        if (self.editingCellNum != -1 && indexPath.row == self.editingCellNum) {
+            return;
+        }
+    }
+    AJKDetailViewController *detailVC = [[AJKDetailViewController alloc] init];
+    [self.navigationController pushViewController:detailVC animated:YES];
 }
 
 - (void)didReceiveMemoryWarning

@@ -10,6 +10,13 @@
 #import "TableMenuCell.h"
 #import "OverLayView.h"
 
+typedef enum{
+    TableIsScroll = 0,
+    TableIsForbiddenScroll
+}IsAllowScroll;
+
 @interface TableViewMenu : UITableViewController<menuActionDelegate,OverLayViewDelegate>
 
+@property(nonatomic, assign) IsAllowScroll isAllowScroll;
+@property(nonatomic, assign) int editingCellNum;
 @end

@@ -153,7 +153,6 @@
                 [self initCellFrame:-menuCount*80];
             } completion:^(BOOL finished) {
                 self.menuViewHidden = NO;
-                NSLog(@"self.menuViewHidden---3>>%d",self.menuViewHidden);
                 [self.menuActionDelegate tableMenuDidShowInCell:self];
             }];
         }else if (moveX >= -20){
@@ -161,7 +160,6 @@
                 [self initCellFrame:0];
             } completion:^(BOOL finished) {
                 self.menuViewHidden = YES;
-                NSLog(@"self.menuViewHidden---4>>%d",self.menuViewHidden);
                 [self.menuActionDelegate tableMenuDidShowInCell:self];
             }];
         }

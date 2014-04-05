@@ -16,6 +16,8 @@
 @end
 
 @implementation TableViewMenu
+@synthesize isAllowScroll;
+@synthesize editingCellNum;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -23,6 +25,7 @@
     if (self) {
         // Custom initialization
         self.isEditing = NO;
+        self.isAllowScroll = TableIsScroll;
     }
     return self;
 }
@@ -46,7 +49,13 @@
     if (_isEditing != isEditing) {
         _isEditing = isEditing;
     }
-    self.tableView.scrollEnabled = !_isEditing;
+//    if (self.isAllowScroll != TableIsScroll) {
+//        self.tableView.scrollEnabled = !isEditing;
+//    }
+    if (isAllowScroll == TableIsScroll) {
+        return;
+    }
+
     if (_isEditing) {
         if (!_overLayView) {
             _overLayView = [[OverLayView alloc] initWithFrame:self.view.bounds];
@@ -81,19 +90,23 @@
     }];
 }
 - (void)tableMenuDidShowInCell:(TableMenuCell *)cell{
+    self.editingCellNum = [self.tableView indexPathForCell:cell].row;
     self.isEditing = YES;
 //    _isEditing = YES;
     self.activeCell = cell;
 }
 - (void)tableMenuWillShowInCell:(TableMenuCell *)cell{
+    self.editingCellNum = [self.tableView indexPathForCell:cell].row;
     self.isEditing = YES;
     self.activeCell = cell;
 }
 - (void)tableMenuDidHideInCell:(TableMenuCell *)cell{
+    self.editingCellNum = -1;
     self.isEditing = NO;
     self.activeCell = nil;
 }
 - (void)tableMenuWillHideInCell:(TableMenuCell *)cell{
+    self.editingCellNum = -1;
     self.isEditing = NO;
     self.activeCell = nil;
 }
