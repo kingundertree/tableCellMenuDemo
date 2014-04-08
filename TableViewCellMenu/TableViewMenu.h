@@ -18,5 +18,5 @@ typedef enum{
 @interface TableViewMenu : UITableViewController<menuActionDelegate,OverLayViewDelegate>
 
 @property(nonatomic, assign) IsAllowScroll isAllowScroll;
-@property(nonatomic, assign) int editingCellNum;
+@property(nonatomic, assign) NSInteger editingCellNum;
 @end

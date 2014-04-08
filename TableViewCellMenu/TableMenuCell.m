@@ -58,7 +58,7 @@
     
     UILabel *lab = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 80)];
     lab.textAlignment = NSTextAlignmentLeft;
-    lab.text = [NSString stringWithFormat:@"||^^<>^^我就是我,颜色不一样的火焰>>%d",indexpathNum.row];
+    lab.text = [NSString stringWithFormat:@"||^^<>^^我就是我,颜色不一样的火焰>>%ld",indexpathNum.row];
     lab.font = [UIFont systemFontOfSize:16];
 //    lab.backgroundColor = [UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:1.0];
     lab.backgroundColor = [UIColor whiteColor];

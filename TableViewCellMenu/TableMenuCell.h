@@ -27,9 +27,8 @@
 @property (nonatomic, assign) float cellX;
 @property (nonatomic, assign) id<menuActionDelegate>menuActionDelegate;
 @property (nonatomic, strong) NSIndexPath *indexpathNum;
-@property (nonatomic, assign) int menuCount;
+@property (nonatomic, assign) NSInteger menuCount;
 @property (nonatomic, strong) UIView *menuView;
-//@property (readonly, assign, nonatomic, getter = isMenuViewHidden) BOOL menuViewHidden;
 @property (assign, nonatomic) BOOL menuViewHidden;
 
 

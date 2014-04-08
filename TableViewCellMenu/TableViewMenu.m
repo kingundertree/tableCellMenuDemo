@@ -25,7 +25,6 @@
     if (self) {
         // Custom initialization
         self.isEditing = NO;
-        self.isAllowScroll = TableIsScroll;
     }
     return self;
 }
@@ -92,7 +91,6 @@
 - (void)tableMenuDidShowInCell:(TableMenuCell *)cell{
     self.editingCellNum = [self.tableView indexPathForCell:cell].row;
     self.isEditing = YES;
-//    _isEditing = YES;
     self.activeCell = cell;
 }
 - (void)tableMenuWillShowInCell:(TableMenuCell *)cell{
